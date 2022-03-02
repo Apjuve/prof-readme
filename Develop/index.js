@@ -1,13 +1,92 @@
 // TODO: Include packages needed for this application
+const inquirer = require('inquirer');
+const fs = require('fs');
+const markdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is this project about?',
+    },
+    {
+        type: 'input',
+        name: 'detail',
+        message: 'In detail describe your project',
+    },
+    {
+       type: 'input',
+       name: 'operate',
+       message: 'What are the  steps you take to maneuver your site?', 
+    },
+    {
+        type: 'checkbox',
+        message: 'What languages do you have knowledge of?',
+        name: 'languages',
+        choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+        when: ({languagesYN}) => {
+            if (languagesYN) {
+                return true;
+            } else {
+                return false
+            }
+        }
+    },
+    {
+        type: 'list',
+        message: 'What is your preferred method to get in contact?',
+        name: 'contact',
+        choices: ['email', 'mobile phone', 'home phone'],
+        validate: contactList => {
+            if (contactList) {
+                return true;
+            } else {
+                console.log('Please provide info');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'contribute',
+        message: 'Include everyone who contribute in this project?',
+        validate: contributeInput => {
+            if (contributeInput) {
+                return true;
+            } else {
+                console.log('provide name!');
+                return false;
+            }
+        }
+    },
+
+];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const writeToFile = data => {
+    let newData = generateMarkddown(data)
+    fs.writeFile('README.md', newData, function (err) {
+        if (err) {
+            return console.log(err);
+        } else {
+            console.log('Your README was created')
+        }
+    });
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+ const init = () => {
+    return inquirer.prompt(questions)
+    .then (data => {
+      return data;
+
+    })
+     
+}
 
 // Function call to initialize app
-init();
+init()
+.then (MD => {
+    return writeToFile(MD)
+})
