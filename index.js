@@ -1,24 +1,25 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
+    
     {
         type: 'input',
         name: 'title',
-        message: 'What is this project about?',
+        message: 'What is this project name?',
     },
     {
         type: 'input',
         name: 'detail',
-        message: 'In detail describe your project',
+        message: 'Concisely describe your project',
     },
     {
        type: 'input',
        name: 'operate',
-       message: 'What are the  steps you take to maneuver your site?', 
+       message: 'What are the steps you take to maneuver your site?', 
     },
     {
         type: 'list',
@@ -30,8 +31,8 @@ const questions = [
     {
         type: 'checkbox',
         message: 'What languages do you have knowledge of?',
-        name: 'languages',
-        choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+        name: 'Technologies',
+        choices: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'Node'],
         // when: ({languagesYN}) => {
         //     if (languagesYN) {
         //         return true;
@@ -39,6 +40,25 @@ const questions = [
         //         return false
         //     }
         // }
+    },
+    
+    {
+        type: 'input',
+        name: 'contribute',
+        message: 'Include everyone who contribute in this project?',
+        // validate: contributeInput => {
+        //     if (contributeInput) {
+        //         return true;
+        //     } else {
+        //         console.log('provide name!');
+        //         return false;
+        //     }
+        // }
+    },
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is your name?',
     },
     {
         type: 'list',
@@ -56,16 +76,8 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'contribute',
-        message: 'Include everyone who contribute in this project?',
-        // validate: contributeInput => {
-        //     if (contributeInput) {
-        //         return true;
-        //     } else {
-        //         console.log('provide name!');
-        //         return false;
-        //     }
-        // }
+        name: 'github',
+        message: 'What is your GitHub username?',
     },
 
 ];
