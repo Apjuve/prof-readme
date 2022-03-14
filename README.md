@@ -55,6 +55,6 @@ The main challenge of this project was the license section. Deciding which licen
 ## Questions
 * Take a look at my GitHub profile to see other projects: 
 [My GitHub Profile](https://github.com/Apjuve)
-* If you have any questions, please reach out via email: christopher.mattix@gmail.com
+* If you have any questions, please reach out via email: abiponce.ap@gmail.com
 
 ## License
